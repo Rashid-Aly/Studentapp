@@ -1,0 +1,13 @@
+- event -> preventDefault()
+        -> stopPropagation()
+
+- Pass object in function parameter
+- parameter vs argument
+- &times;
+- Add/Remove element(s) from innerHTML
+- Add Image
+- Rest/spread operators.
+- Array/object methods
+- &&/|| operator
+- ternary operator
+- Dynamic object property name.
