@@ -7,18 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student App</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 
 <body>
+
+
   <div id="root">
     <div>
+     
+      <h2 class="main-Heading"><marquee behavior="" direction="">Student App</marquee></h2>
 
-      <h2>Student App</h2>
       <div class="top" style="margin: 20px;">
-        <button onclick="studentApp.handleStudentForm()" id="search">Add Student</button>
-        <input type="text" onkeyup="studentApp.searchStudent(event)" id="search" placeholder="search by name .... ">
+        <button onclick="studentApp.handleStudentForm()">Add Student</button>
+        <input type="text" placeholder="Search by Name...." id="search" onkeyup="studentApp.studentsSearch(event)">
       <div class="filters">
-        <button onclick="studentApp.showAlls()">All</button>
         <button onclick="studentApp.showMales()">Males</button>
         <button onclick="studentApp.showFemales()">Females</button>
       </div>
@@ -30,7 +33,10 @@
     <div class="modal" onclick="studentApp.closeModal()"></div>
     <div class="preview"></div>
   </div>
-  <script src="app.js"></script>
+  <!-- <script src="app.js"></script> -->
+  <script src="custom.js"></script>
+
+  
 </body>
 
 </html>

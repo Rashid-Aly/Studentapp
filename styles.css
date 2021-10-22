@@ -5,6 +5,18 @@ body {
   margin: 0;
   background-color: rgb(185, 173, 173);
 }
+.main-Heading{
+  cursor: pointer;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 400px;
+  text-align: center;
+}
+.main-Heading:hover{
+  color: blue;
+}
 #root {
 display: flex;
 justify-content: space-evenly;
@@ -111,9 +123,8 @@ justify-content: space-evenly;
 .about{
   margin-top: 50px;
   box-shadow: 0 0 2px 2px rgba(6, 17, 114, 0.575);
-/* width: 100%; */
-text-align: center;
-background-color: wheat;
+  text-align: center;
+  background-color: wheat;
   padding: 13px;
 }
 .close {
@@ -127,20 +138,41 @@ background-color: wheat;
   display: block;
   margin: 5px 0;
 }
+
 .previews {
-  margin-top: 65px;
-  width: 400px;
-  text-align: center;
-  background-color: rgb(197, 196, 194);
+  /* padding: 40px; */
+  padding-right: 20px;
+  margin-top: 25px;
+  width: 290px;
+  background-color: #fff;
+  padding:20px;
 }
 .preview p{
-  padding: 15px;
+  color: rgb(73, 69, 69);
 }
+
+.preview p span{
+  padding: 30px;
+  color: black;
+  font-weight: bold;
+}
+.about-details{
+  width: 88%;
+  text-align: center;
+  display: flex;
+  padding-right:20px;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .previews img{
-  margin-top: 40px;
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
+  /* padding-top: 20px; */
+  margin:0 73px;
+  margin-top: 20px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 .top{
   background-color: rgba(6, 17, 114, 0.575);
@@ -166,4 +198,29 @@ width: 300px;
   border-radius: 15px;
   border: none;
   cursor: pointer;
+}
+.top button:hover{
+  color: #eee;
+  background-color: rgb(0, 0, 116);
+}
+.fornt-aswomew{
+  display:flex; 
+  margin-left: 40px;
+  /* justify-content:space-around; */
+  padding: 25px 0;
+  width: 240px
+}
+.fornt-aswomew i{
+  background-color: rgba(223, 215, 215, 0.63);
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 17px;
+}
+.list-img img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
 }

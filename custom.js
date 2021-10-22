@@ -1,3 +1,4 @@
+
 const studentList = document.querySelector(".student-list");
 const modal = document.querySelector(".modal");
 const preview = document.querySelector(".preview");
@@ -7,6 +8,7 @@ const studentApp = {
   state: {
     students: [
       {
+        
         id: 1,
         firstName: "Irfan Ali",
         class: "10th",
@@ -14,7 +16,7 @@ const studentApp = {
         Phone: "03120000000",
         gender:"Male",
         about:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut nihil dolorem, inventore neque veritatis magnam, amet tempore officiis maxime!",
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
       },
       
       {
@@ -25,7 +27,7 @@ const studentApp = {
         Phone: "03120002222",
         gender:"Male",
         about:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut nihil dolorem, inventore neque veritatis magnam, amet tempore officiis maxime!",
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
       },
       {id: 3,
       firstName: "Ambreen",
@@ -34,7 +36,7 @@ const studentApp = {
       Phone: "03129990000",
       gender:"Female",
       about:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut nihil dolorem, inventore neque veritatis magnam, amet tempore officiis maxime!",
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
     },
     {id: 4,
     firstName: "Mavish",
@@ -43,7 +45,7 @@ const studentApp = {
     Phone: "03126660000",
     gender:"Female",
     about:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut nihil dolorem, inventore neque veritatis magnam, amet tempore officiis maxime!",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
   },
   {id: 5,
     firstName: "Koi B larki",
@@ -52,7 +54,7 @@ const studentApp = {
     Phone: "03129990022",
     gender:"Female",
     about:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut nihil dolorem, inventore neque veritatis magnam, amet tempore officiis maxime!",
+     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
   },
   {id: 6,
     firstName: "Khan",
@@ -61,7 +63,7 @@ const studentApp = {
     Phone: "Nill ",
     gender:"Male",
     about:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut nihil dolorem, inventore neque veritatis magnam, amet tempore officiis maxime!",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
   },
     ],
     newStudent: {
@@ -73,7 +75,9 @@ const studentApp = {
       about:"",
       gender: "",
     },
+    
   },
+
   stopPropagation: (e) => {
     e.stopPropagation();
   },
@@ -82,22 +86,25 @@ const studentApp = {
     const newStudent = {
       [e.target.name]: e.target.value,
     };
+
     studentApp.state.newStudent = {
       ...studentApp.state.newStudent,
       ...newStudent,
     };
-    console.log({newStudent:studentApp.state.newStudent })
   },
   handleStudent: (e) => {
     e.preventDefault();
     let gndr = "";
-    let gendes = document.getElementsByName('gender');
+    let gendes = document.getElementsByName('gdr');
+
     for(i = 0; i < gendes.length; i++) {
-      if(gendes[i].checked)
-      console.log(gendes[i].value);
-      gndr = gendes[i].value;
-     }
-     console.log(gndr);
+      if(gendes[i].checked) {
+
+        console.log(gendes[i].value);
+        gndr = gendes[i].value;
+      } 
+    }
+    console.log(gndr);
     const studentObj = {
       ...studentApp.state.newStudent,
       id:
@@ -105,7 +112,7 @@ const studentApp = {
       Number(Math.floor(Math.random() * 100).toFixed(0)),
       gender:gndr,
     };
-   
+    
     
     if (studentApp.state.newStudent.id) {
       const index = studentApp.state.students.findIndex(
@@ -134,47 +141,46 @@ const studentApp = {
     console.log(studentApp.state.students)
   },
 
-  studentsSearch:(e)=>{
-let nade = e.target.value.toLowerCase();
-let myAry = studentApp.state.students.filter((std) =>std.firstName.toLowerCase().includes(nade))
-studentApp.render(myAry)
-  },
-  showMales: ()=>{
-    console.log({gender}
-    )
-      // if (gender === "all"){
-      //   gender = "Male"
-      //   studentApp.render(studentApp.state.students)
-      // }else{
-        gender = "all"
-        let nade = search.value.toLowerCase();
-        const newArray = studentApp.state.students.filter( item => item.gender === 'Male')
-        let myAry = newArray.filter((std) =>std.firstName.toLowerCase().includes(nade))
-        studentApp.render(myAry)
-      // }
-  },
-  showFemales: ()=>{
-    console.log([gender])
-    if(gender === "all"){
-      gender = "Female"
-      studentApp.render(studentApp.state.students)
-    }
-    else
-    {
-      gender = "all"
-      let nade = search.value.toLowerCase();
-      const newArray = studentApp.state.students.filter( item => item.gender === 'Female')
-      let myAry = newArray.filter((std) =>std.firstName.toLowerCase().includes(nade))
-      studentApp.render(myAry);
-    }
-  },
-  
+  studentsSearch:()=>{
+    let nade = search.value.toLowerCase();
+    let myAry = studentApp.state.students.filter((std) =>std.firstName.toLowerCase().includes(nade))
+    studentApp.render(myAry)
+      },
+      showMales: ()=>{
+        console.log({gender}
+        )
+          // if (gender === "all"){
+          //   gender = "Male"
+          //   studentApp.render(studentApp.state.students)
+          // }else{
+            gender = "Male"
+            let nade = search.value.toLowerCase();
+            const newArray = studentApp.state.students.filter( item => item.gender === 'Male')
+            let myAry = newArray.filter((std) =>std.firstName.toLowerCase().includes(nade))
+            studentApp.render(myAry)
+          // }
+      },
+      showFemales: ()=>{
+        console.log([gender])
+        if(gender === "all"){
+          gender = "Female"
+          studentApp.render(studentApp.state.students)
+        }
+        else
+        {
+          gender = "all"
+          let nade = search.value.toLowerCase();
+          const newArray = studentApp.state.students.filter( item => item.gender === 'Female')
+          let myAry = newArray.filter((std) =>std.firstName.toLowerCase().includes(nade))
+          studentApp.render(myAry);
+        }
+      },
   handleStudentForm: (student) => {
     const form = `
     <div class="modal-content" id="formModal"onclick="studentApp.stopPropagation(event)">
     <div class="close" onclick="studentApp.closeModal()">&times</div>
     <h3>${student ? "Update" : "Add"} Student Form</h3>
-      <form id="form" onchange="studentApp.handleChange(event)" onkeyup="studentApp.handleChange(event)" onsubmit="studentApp.handleStudent(event)">
+      <form id="form" onkeyup="studentApp.handleChange(event)" onsubmit="studentApp.handleStudent(event)">
       <input class="input" value="${
         student ? student.firstName : ""
       }" name="firstName" placeholder="Enter first name"/>
@@ -189,8 +195,10 @@ studentApp.render(myAry)
         }" name="Phone" placeholder="contact"/>
         <div>
         gender:
-        <input  type="radio" name="gender" value="Female">Female
-        <input  type="radio" name="gender" value="Male">Male:
+        <label for="male">Male: </label>
+        <input  type="radio" id="male" name="gdr" value="Male">
+        <label for="female">Female</label>
+        <input  type="radio" id="female" name="gdr" value="Female">
         <div><br>
         <textarea cols="41" rows="3" value="${student ? student.about : ""}" name="about" placeholder="Write ur about"></textarea><br>
         <input type="file"  value="${student ? student.image : ""}" id="output" accept="image/*" name="image"  onchange="studentApp.loadFile(event)">
@@ -246,8 +254,6 @@ studentApp.render(myAry)
   },
 
   handleUpdate: (id) => {
-    //  const{state} = studentApp
-    // const{students} = state
     const studentState = [...studentApp.state.students];
     const student = studentState.find((x) => x.id === id);
     if (student) {
@@ -258,8 +264,6 @@ studentApp.render(myAry)
 
   handlePreview: (id) => {
     console.log(id);
-    // const{state} = studentApp
-    // const{students} = state
     const studentState = [...studentApp.state.students];
     const student = studentState.find((x) => x.id === id);
 
@@ -268,13 +272,20 @@ studentApp.render(myAry)
       const previewContent = `
           <div class= "previews">
           <img src= ${student.image} >
-          <p>ID: ${student.id}</p>
-            <p>Name: ${student.firstName}</p>
-            <p>Class: ${student.class}</p>
-            <p>Gender: ${student.gender}</p>
-            <p>DOB: ${student.DOB}</p>
-            <p>Phone: ${student.Phone}</p>
-            <p>About: ${student.about}</p>
+          <div class="fornt-aswomew"><i class="fas fa-phone-alt"></i> <i class="far fa-comment-dots"></i> <i class="far fa-envelope"></i></div>
+          <p><span>About</span><br> ${student.about}</p>
+          <div class="about-details">
+          <p><span>ID:</span><br> ${student.id}</p>
+          <p><span>Name: </span><br> ${student.firstName}</p>
+          </div>
+          <div class="about-details">
+          <p><span style="padding:">Class: </span><br> ${student.class}</p>
+          <p><span>Gender: </span><br> ${student.gender}</p>
+          </div>
+          <div class="about-details">
+          <p><span>DOB: </span><br> ${student.DOB}</p>
+          <p><span>Phone: </span><br> ${student.Phone}</p>
+          </div>
           </div>
       `;
       // preview.style.border = `1px solid #eee`;
@@ -282,35 +293,34 @@ studentApp.render(myAry)
     }
   },
   asscend:() =>{
-    // const{state} = studentApp
-    // const{students} = state
-    // console.log(students);
-    studentApp.state.students.sort((a, b) =>(a.firstName.toLowerCase() > b.firstName.toLowerCase()) ? 1 : -1 )
-    studentApp.render([...studentApp.state.students]);
+    const{state, render} = studentApp
+    const{students} = state
+    students.sort((a, b) =>(a.firstName.toLowerCase() > b.firstName.toLowerCase()) ? 1 : -1 )
+    render([...students]);
   },
   idAsscend:() =>{
-    // const{state} = studentApp
-    // const{students} = state
-    // console.log(students);
-    studentApp.state.students.sort((a, b) =>(a.id> b.id) ? 1 : -1 )
-    studentApp.render([...studentApp.state.students]);
+    const{state,render} = studentApp
+    const{students} = state
+    students.sort((a, b) =>(a.id> b.id) ? 1 : -1 )
+    render([...studentApp.state.students]);
   },
   dobAsnd:() =>{
-    // const{state, render} = studentApp
-    // const{students} = state
-    // console.log(students);
-  studentApp.state.students.sort((a, b) =>(a.DOB < b.DOB) ? -1 : 1 )
-    studentApp.render([...studentApp.state.students]);
+      const{state,render} = studentApp
+      const{students} = state
+    students.sort((a, b) =>(a.DOB < b.DOB) ? -1 : 1 )
+    render([...students]);
   },
   render: (array) => { 
    
     studentList.innerHTML = "";
     
-    let student = `<div class="head"><tr><th onclick="studentApp.idAsscend()">ID</th><th onclick="studentApp.asscend()">firstName</th><th>class</th><th onclick="studentApp.dobAsnd()">DOB</th><th>Phone</th><th>Action</th></tr></div>`
+    let student = `<div class="head"><tr><th>Images</th><th onclick="studentApp.idAsscend()">ID</th><th onclick="studentApp.asscend()">firstName</th><th>class</th><th onclick="studentApp.dobAsnd()">DOB</th><th>Phone</th><th>Action</th></tr></div>`
     array.forEach((item) => {
       student += `
       <div>    
             <tr>
+            
+                <td class="list-img"><img src="${item.image}" alt="Image"></td>
                 <td class="list-item">${item.id}</td>
                 <td class="list-item">${item.firstName}</td>
                 <td class="list-item">${item.class}</td>
@@ -326,13 +336,12 @@ studentApp.render(myAry)
         `;
       });
       studentList.innerHTML = student;
-  },
-  init: () => {
-    // const{state,render} = studentApp
-    // const{students} = state
- studentApp.render(...[studentApp.state.students]);
-  },
+    },
+    init: () => {
+        const{state,render}=studentApp
+        const{students} = state
+        render(students);
+    },
 };
-
-studentApp.init();
-
+const{init} = studentApp
+init();
