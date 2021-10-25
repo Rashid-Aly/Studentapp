@@ -15,6 +15,7 @@ const studentApp = {
         DOB: "1995/11/11",
         Phone: "03120000000",
         gender:"Male",
+        gmail: "irfan@gmail.com",
         about:
           "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
       },
@@ -26,6 +27,7 @@ const studentApp = {
         DOB: "1997/10/10",
         Phone: "03120002222",
         gender:"Male",
+        gmail: "haider@gmail.com",
         about:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
       },
@@ -35,6 +37,7 @@ const studentApp = {
       DOB: "1991/05/01",
       Phone: "03129990000",
       gender:"Female",
+      gmail: "ambreen@gmail.com",
       about:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
     },
@@ -44,6 +47,7 @@ const studentApp = {
     DOB: "1993/05/06",
     Phone: "03126660000",
     gender:"Female",
+    gmail: "mavish@gmail.com",
     about:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
   },
@@ -53,6 +57,7 @@ const studentApp = {
     DOB: "1999/05/01",
     Phone: "03129990022",
     gender:"Female",
+    gmail: "koi@gmail.com",
     about:
      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
   },
@@ -62,6 +67,7 @@ const studentApp = {
     DOB: "2002/05/01",
     Phone: "Nill ",
     gender:"Male",
+    gmail: "khan@gmail.com",
     about:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus fugiat atque quasi esse sapiente aut. Cumque dolorum, architecto laboriosam aut",
   },
@@ -181,15 +187,19 @@ const studentApp = {
     <div class="close" onclick="studentApp.closeModal()">&times</div>
     <h3>${student ? "Update" : "Add"} Student Form</h3>
       <form id="form" onkeyup="studentApp.handleChange(event)" onsubmit="studentApp.handleStudent(event)">
-      <input class="input" value="${
+      <input required class="input" value="${
         student ? student.firstName : ""
-      }" name="firstName" placeholder="Enter first name"/>
+      }" name="firstName" placeholder="Enter name"/>
         <input class="input" value="${
           student ? student.class : ""
         }" name="class" placeholder="Enter class"/>
+        <input type="email" required class="input" value="${
+          student ? student.gmail : ""
+        }" name="gmail" placeholder="enter your gmail"/>
         <input class="input" value="${
           student ? student.DOB : ""
         }" name="DOB" placeholder="DOB"/>
+        
         <input class="input" value="${
           student ? student.Phone : ""
         }" name="Phone" placeholder="contact"/>
@@ -200,14 +210,14 @@ const studentApp = {
         <label for="female">Female</label>
         <input  type="radio" id="female" name="gdr" value="Female">
         <div><br>
-        <textarea cols="41" rows="3" value="${student ? student.about : ""}" name="about" placeholder="Write ur about"></textarea><br>
+        <textarea cols="43" rows="3" value="${student ? student.about : ""}" name="about" placeholder="Write ur about"></textarea><br>
         <input type="file"  value="${student ? student.image : ""}" id="output" accept="image/*" name="image"  onchange="studentApp.loadFile(event)">
         <button type="submit">${student ? "Update" : "Add"}</button>
         </div>
         </form>
         </div>
         `;
-
+        // modal.button.style.color = "blue";
     modal.style.display = "flex";
     modal.innerHTML = form;
   },
@@ -234,9 +244,9 @@ const studentApp = {
           <div class="confirm" onclick="studentApp.stopPropagation(event)">
               <div class="close" onclick="studentApp.closeModal()">&times;</div>
               <h5>Are you sure?<h5>
-              <p>Do you want to delete <strong>${student.firstName}</strong>?</p>
-              <button onclick="studentApp.closeModal()">No</button>
-              <button onclick="studentApp.confirmDelete()">Yes</button>
+              <p>Do you want to delete <strong>${student.firstName}</strong> ?</p>
+              <button onclick="studentApp.closeModal()">Back</button>
+              <button onclick="studentApp.confirmDelete()">Okey</button>
           </div>
       `;
       modal.style.display = "flex";
@@ -270,13 +280,15 @@ const studentApp = {
     if (student) {
       studentApp.state.newStudent = student;
       const previewContent = `
-          <div class= "previews">
+          <div class= "previews" onclick="studentApp.stopPropagation(event)">
+          <div class="close" onclick="studentApp.closeModal()">&times;</div>
           <img src= ${student.image} >
+          <h3>${student.firstName}</h3>
           <div class="fornt-aswomew"><i class="fas fa-phone-alt"></i> <i class="far fa-comment-dots"></i> <i class="far fa-envelope"></i></div>
           <p><span>About</span><br> ${student.about}</p>
           <div class="about-details">
           <p><span>ID:</span><br> ${student.id}</p>
-          <p><span>Name: </span><br> ${student.firstName}</p>
+          <p><span>Gmail: </span><br> ${student.gmail}</p>
           </div>
           <div class="about-details">
           <p><span style="padding:">Class: </span><br> ${student.class}</p>
@@ -288,8 +300,9 @@ const studentApp = {
           </div>
           </div>
       `;
-      // preview.style.border = `1px solid #eee`;
-      preview.innerHTML = previewContent;
+      modal.style.display = "flex";
+      modal.innerHTML = previewContent;
+      // preview.innerHTML = previewContent;
     }
   },
   asscend:() =>{
@@ -314,15 +327,13 @@ const studentApp = {
    
     studentList.innerHTML = "";
     
-    let student = `<div class="head"><tr><th>Images</th><th onclick="studentApp.idAsscend()">ID</th><th onclick="studentApp.asscend()">firstName</th><th>class</th><th onclick="studentApp.dobAsnd()">DOB</th><th>Phone</th><th>Action</th></tr></div>`
+    let student = `<div class="head"><tr><th onclick="studentApp.asscend()">firstName</th><th onclick="studentApp.idAsscend()">ID</th><th>class</th><th onclick="studentApp.dobAsnd()">DOB</th><th>Phone</th><th>Action</th></tr></div>`
     array.forEach((item) => {
       student += `
       <div>    
             <tr>
-            
-                <td class="list-img"><img src="${item.image}" alt="Image"></td>
+            <td class="list-img"><img src="${item.image}">${item.firstName}</td>            
                 <td class="list-item">${item.id}</td>
-                <td class="list-item">${item.firstName}</td>
                 <td class="list-item">${item.class}</td>
                 <td class="list-item">${item.DOB}</td>
                 <td class="list-item">${item.Phone}</td>
