@@ -11,31 +11,33 @@
 </head>
 
 <body>
-
-
   <div id="root">
     <div class="roots">
-     
-      <h2 class="main-Heading"><marquee behavior="" direction="">Student App</marquee></h2>
+      <h2 class="main-Heading">Student App</h2>
 
-      <div class="top" style="margin: 20px;">
+      <div class="top" style="width:99.2%; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; gap: 4px; align-items: center;">
+          <input type="text" placeholder="Search by Name...." id="search" onkeyup="studentApp.studentsSearch(event)">
+          <div class="filters" style="padding: 20px;">
+            <select style="padding: 8px; border-radius: 10px; background-color: white; outline: none;" id="genderFilter" onchange="studentApp.filterByGender(this.value)">
+              <option value="all">All</option>
+              <option value="male">Males</option>
+              <option value="female">Females</option>
+            </select>
+          </div>
+        </div>
         <button onclick="studentApp.handleStudentForm()">Add Student</button>
-        <input type="text" placeholder="Search by Name...." id="search" onkeyup="studentApp.studentsSearch(event)">
-      <div class="filters">
-        <button onclick="studentApp.showMales()">Males</button>
-        <button onclick="studentApp.showFemales()">Females</button>
-      </div>
+       
+      
       </div>
       <table class="student-list"></table>
     </div>
 
     <div class="modal" onclick="studentApp.closeModal()"></div>
-    <!-- <div class="preview"></div> -->
   </div>
-  <!-- <script src="app.js"></script> -->
-  <script src="custom.js"></script>
 
-  
+  <script src="custom.js"></script>
 </body>
 
 </html>
+
