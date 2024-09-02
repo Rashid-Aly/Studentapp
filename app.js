@@ -320,6 +320,7 @@ studentApp.render(myAry)
                     <button onclick="studentApp.handlePreview(${item.id})">View</button>
                     <button onclick="studentApp.handleUpdate(${item.id})">Edit</button>
                     <button onclick="studentApp.openDeleteModal(${item.id})">Delete</button>
+                    
                 </td>
             </tr>
           </div>
@@ -328,8 +329,7 @@ studentApp.render(myAry)
       studentList.innerHTML = student;
   },
   init: () => {
-    // const{state,render} = studentApp
-    // const{students} = state
+    
  studentApp.render(...[studentApp.state.students]);
   },
 };
